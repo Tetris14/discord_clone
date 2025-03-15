@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Message } from "src/message/entities/message.entity";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class User {
@@ -13,6 +14,12 @@ export class User {
 
   @Column()
   password: string
+
+  @OneToMany(() => Message, (message) => message.sender)
+  sentMessages: Message[]
+
+  @OneToMany(() => Message, (message) => message.receiver)
+  receivedMessages: Message[]
 
   @CreateDateColumn()
   createdAt: Date

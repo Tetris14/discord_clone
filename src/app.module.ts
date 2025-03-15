@@ -3,6 +3,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { MessageModule } from './message/message.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { AuthModule } from './auth/auth.module';
       synchronize: true
     }),
     UserModule,
-    AuthModule
+    AuthModule,
+    MessageModule
   ],
   controllers: [],
   providers: [
